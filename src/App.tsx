@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectBalance } from './features/bank/bank.slice';
+import { useSelector } from 'react-redux';
+import { selectBalance } from './features/bank/bank.docslice';
 import Bank from './components/Bank/Bank';
 
 function App() {

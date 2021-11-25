@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { deposit } from "../../features/bank/bank.slice";
-import { addTransaction } from "../../features/transactions/transactions.slice";
+import { deposit as moneyCredit } from "../../features/bank/bank.docslice";
+import { addTransaction } from "../../features/transactions/transactions.colslice";
 
 const Bank = () => {
 
@@ -12,9 +12,9 @@ const Bank = () => {
     const depositMoney = useCallback(() => {
 
         //dispatch({ type: 'bank/deposit', payload: {amount:depositInput.current.value} });
-        dispatch(deposit(depositInput.current.value));
+        dispatch(moneyCredit(depositInput.current.value));
         dispatch(addTransaction({
-            id: String(Math.random()),
+            transactionId: String(Math.random()),
             date: (new Date()).toDateString(),
             amount: depositInput.current.value,
             transactionType: "deposit"
