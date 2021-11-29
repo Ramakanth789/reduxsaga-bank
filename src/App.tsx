@@ -2,6 +2,7 @@ import './App.css';
 import { useSelector } from 'react-redux';
 import { selectBalance } from './features/bank/bank.docslice';
 import Bank from './components/Bank/Bank';
+import Transactions from './smart-components/Transactions/Transactions';
 
 function App() {
   
@@ -12,6 +13,7 @@ function App() {
     <div className="App">
       Balance : {balance}
       <Bank></Bank>
+      <Transactions></Transactions>
     </div>
   );
 }

@@ -10,6 +10,7 @@ export interface ITransaction {
     date: string;
     amount: number;
     transactionType: string;
+    currency :string;
 }
 
 const entityAdapter = createEntityAdapter<ITransaction>({

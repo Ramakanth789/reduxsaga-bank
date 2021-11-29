@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { deposit as moneyCredit } from "../../features/bank/bank.docslice";
 import { addTransaction } from "../../features/transactions/transactions.colslice";
+import { v4 as generateUniqueId } from 'uuid';
 
 const Bank = () => {
 
@@ -14,10 +15,11 @@ const Bank = () => {
         //dispatch({ type: 'bank/deposit', payload: {amount:depositInput.current.value} });
         dispatch(moneyCredit(depositInput.current.value));
         dispatch(addTransaction({
-            transactionId: String(Math.random()),
+            transactionId: generateUniqueId(),
             date: (new Date()).toDateString(),
-            amount: depositInput.current.value,
-            transactionType: "deposit"
+            amount: Number(depositInput.current.value),
+            transactionType: "deposit",
+            currency:"INR"
         }
         ))
 
