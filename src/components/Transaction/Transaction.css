@@ -1,0 +1,7 @@
+.TransactionWrapper {
+    display: flex;
+    flex-direction: row;
+    background-color: aliceblue;
+    gap : 10px;
+    border : 1px solid black;
+}
