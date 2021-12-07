@@ -1,5 +1,4 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit"
-import { useReducer } from "react"
 import { RootState } from '../../app/store'
 
 //structure

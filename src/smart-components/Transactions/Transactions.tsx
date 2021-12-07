@@ -8,7 +8,7 @@ const Transactions = () => {
    const transactions = useSelector(selectAllTransactions);
 
    const transactionsUI = useMemo(() => {
-      return transactions.map((transaction) => <Transaction {...transaction} />)
+      return transactions.map((transaction) => <Transaction key={transaction.transactionId} {...transaction} />)
    }, [transactions])
 
    return <>
