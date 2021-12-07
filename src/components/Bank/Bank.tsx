@@ -15,8 +15,6 @@ const Bank = () => {
         setDepositAmount(value);
     },[]) 
 
-    console.log('Hello');
-
     const depositMoney = useCallback(() => {
 
         //dispatch({ type: 'bank/deposit', payload: {amount:depositInput.current.value} });
