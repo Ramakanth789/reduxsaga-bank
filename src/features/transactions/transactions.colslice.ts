@@ -11,6 +11,7 @@ export interface ITransaction {
     amount: number;
     transactionType: string;
     currency :string;
+    id:string;
 }
 
 const entityAdapter = createEntityAdapter<ITransaction>({

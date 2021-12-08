@@ -29,7 +29,7 @@ export const { addTransaction } = transactionsSlice.actions;
 export const { selectAll: selectTransactions } = entityAdapter.getSelectors((state: RootState) => state.transactions)
 
 export default transactionsSlice
-
+ 
 
 
 
