@@ -4,24 +4,16 @@ import { selectBalance } from './features/bank/bank.docslice';
 import Bank from './components/Bank/Bank';
 import Transactions from './smart-components/Transactions/Transactions';
 import { useCallback } from 'react';
+import { Button } from '@mui/material';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import AuthenticationPage from './components/AuthenticationPage/AuthenticationPage';
+import DashboardPage from './components/DashboardPage/DashboardPage';
+import AppRoutes from './components/AppRoutes/AppRoutes';
 
 function App() {
-
-  //executing the query
-  const balance = useSelector(selectBalance);
-
-  const dispatch = useDispatch();
-
-  const getAllTransactions = useCallback(() => {
-    dispatch({ type: "GET_TRANSACTIONS" });
-  }, [dispatch])
-
   return (
     <div className="App">
-      Balance : {balance}
-      <Bank></Bank>
-      <Transactions></Transactions>
-      <button onClick={getAllTransactions}>Get All TRansactions</button>
+         <AppRoutes></AppRoutes>
     </div>
   );
 }

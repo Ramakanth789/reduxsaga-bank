@@ -24,7 +24,8 @@ const Bank = () => {
             date: (new Date()).toDateString(),
             amount: Number(depositAmount),
             transactionType: "deposit",
-            currency:"INR"
+            currency:"INR",
+            id:""
         }
         ))
 
@@ -34,7 +35,7 @@ const Bank = () => {
         <TextField id="outlined-basic" label="Deposit Amount" variant="filled" type='number' value={depositAmount} onChange={onDepositAmountChange} />
         {/* <input value={depositAmount} onChange={onDepositAmountChange}  type="number"></input> */}
         {/* <button onClick={depositMoney}>Deposit Balance</button> */}
-        <Button onClick={depositMoney} variant="contained">Contained</Button>
+        <Button onClick={depositMoney} variant="contained">Deposit</Button>
     </>
 }
 

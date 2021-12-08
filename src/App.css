@@ -1,9 +1,12 @@
 .App {
   text-align: center;
-  display:flex;
+  display: flex;
   flex-direction: column;
-  width : 400px;
+  width: 800px;
+  margin: 0 auto;
+  gap: 10px;
 }
+h1{color: green;;}
 
 .App-logo {
   height: 40vmin;
