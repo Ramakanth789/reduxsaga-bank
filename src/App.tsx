@@ -13,6 +13,7 @@ import AppRoutes from './components/AppRoutes/AppRoutes';
 function App() {
   return (
     <div className="App">
+      
          <AppRoutes></AppRoutes>
     </div>
   );
