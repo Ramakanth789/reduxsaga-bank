@@ -3,6 +3,10 @@ import './AuthenticationPage.css';
 import Logo from "../../logo.png";
 import { Field, Form } from 'react-final-form';
 import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import TextFieldAdapter from '../TextFieldAdapter/TextFieldAdapter';
+import axios from 'axios';
+import { FORM_ERROR } from 'final-form';
 
 const requiredValidator = (value: string) => {
   console.log("checking required", value);
@@ -19,16 +23,34 @@ const emailValidator = (value: string) => {
 ///>
 export const BasicCard = () => {
 
-  const onSubmit = useCallback((values) => {
+  const navigate = useNavigate();
+
+  const onSubmit = useCallback(async (values) => {
     console.log(values);
+    const result = await axios.post('http://localhost:4444/auth/validate', values);
+    console.log(result);
+    if (result.data ) {
+      navigate("./dashboard")
+    }else{
+      return { [FORM_ERROR]: 'Login Failed' }
+    }
+    // navigate("./dashboard")
   }, []);
 
   const emailInputRender = useCallback(({ input, meta }) => {
     return <>
-      <input {...input}></input>
+     <TextFieldAdapter input={input}></TextFieldAdapter>
       {meta.touched && meta?.error && <span>Email Not Valid</span>}
     </>
   }, []);
+
+  const passwordInputRender = useCallback(({ input, meta }) => {
+    return <>
+     <TextFieldAdapter input={input} type="password"></TextFieldAdapter>
+      {meta.touched && meta?.error && <span>Password is Requried</span>}
+    </>
+  }, []);
+
 
   return (
     <Card style={{ width: "100%" }}>
@@ -36,11 +58,13 @@ export const BasicCard = () => {
         <Form
           onSubmit={onSubmit}
 
-          render={({ handleSubmit, invalid }) => (
-            <form>
+          render={({ handleSubmit, invalid , submitError, form}) => (
+            <form className='LoginBlock_Wrapper'>
               <Field name="email" validate={emailValidator} render={emailInputRender}/>
-              <Field name="password" validate={requiredValidator} component="input"></Field>
+              <Field name="password" validate={requiredValidator} render={passwordInputRender}></Field>
               <Button disabled={invalid} variant="contained" size="large" type="submit" onClick={handleSubmit}> Login </Button>
+              <Button variant="contained" size="large" onClick={() => form.reset() }> Reset </Button>
+              {submitError && <div className="error">{submitError}</div>}
             </form>
           )}></Form>
 
