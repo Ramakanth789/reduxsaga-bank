@@ -20,7 +20,10 @@ const authSlice = createSlice({
         }
     }
 });
+//When you modify the data use this
 export const {setLoggedIn, setUserDetails } = authSlice.actions;
+
+//When you want to read data use this
 export const selectAuth = (state:RootState) => state.auth;
 export const selectLoggedIn = createSelector(selectAuth,(auth) => auth.loggedIn )
 

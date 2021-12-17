@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { setLoggedIn } from '../../features/auth/auth';
 import { selectBalance } from '../../features/bank/bank.docslice';
 import Transactions from '../../smart-components/Transactions/Transactions';
 import Bank from '../Bank/Bank';
@@ -12,12 +12,12 @@ const DashboardPage = () => {
     const balance = useSelector(selectBalance);
     const getAllTransactions = useCallback(() => {
         dispatch({ type: "GET_TRANSACTIONS" });
-    }, [dispatch]); 
-    const navigate = useNavigate();
-    const logoutSession = useCallback ((values) =>{
-        //window.location.reload()
-        return navigate("window.location.href='http://localhost:3000/'")
-    },[]);
+    }, [dispatch]);
+
+    const logoutSession = useCallback((values) => {
+        localStorage.setItem('loggedIn', "false");
+        dispatch(setLoggedIn(false))
+    }, [dispatch]);
 
     return <>
         <div >

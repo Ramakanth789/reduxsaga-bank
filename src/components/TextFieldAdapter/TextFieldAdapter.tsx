@@ -2,9 +2,10 @@ import { TextField } from "@mui/material";
 import { useCallback } from "react";
 
 const TextFieldAdapter = ({input, ...rest}:any) => {
+
  const onChange = useCallback ((e) => {
      input.onChange(e.target.value);
- }, [input.onChange])
+ }, [input])
  
     return<>
     <TextField {...input} onChange={onChange} {...rest}></TextField>

@@ -4,6 +4,7 @@ import { deposit as moneyCredit } from "../../features/bank/bank.docslice";
 import { addTransaction } from "../../features/transactions/transactions.colslice";
 import { v4 as generateUniqueId } from 'uuid';
 import { Button, TextField } from "@mui/material";
+import { BankActions } from "../../features/actions";
 
 const Bank = () => {
 
@@ -19,7 +20,15 @@ const Bank = () => {
 
         //dispatch({ type: 'bank/deposit', payload: {amount:depositInput.current.value} });
         dispatch(moneyCredit(depositAmount));
-        dispatch(addTransaction({
+
+        dispatch({type:BankActions.SAVE_TRANSACTION_TO_SERVER,transaction:{
+            date: (new Date()).toDateString(),
+            amount: Number(depositAmount),
+            transactionType: "deposit",
+            currency:"INR"
+        }})
+
+        /*dispatch(addTransaction({
             transactionId: generateUniqueId(),
             date: (new Date()).toDateString(),
             amount: Number(depositAmount),
@@ -27,7 +36,7 @@ const Bank = () => {
             currency:"INR",
             id:""
         }
-        ))
+        ))*/
 
     }, [depositAmount,dispatch])
 
