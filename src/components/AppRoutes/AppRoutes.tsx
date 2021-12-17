@@ -4,8 +4,8 @@ import DashboardPage from "../DashboardPage/DashboardPage"
 
 const AppRoutes = () => <Routes>
     <Route path="/" element={<AuthenticationPage />} />
-    <Route path="authentication" element={<AuthenticationPage />} />
-    <Route path="dashboard" element={<DashboardPage />} />
+    <Route path="/authentication" element={<AuthenticationPage />} />
+    <Route path="/dashboard" element={<DashboardPage />} />
 </Routes>;
 
 

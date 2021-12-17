@@ -6,16 +6,15 @@ import { RootState } from "../../app/store";
 //initialstate
 
 export interface ITransaction {
-    transactionId: string;
+    _id: string;
     date: string;
     amount: number;
     transactionType: string;
     currency :string;
-    id:string;
 }
 
 const entityAdapter = createEntityAdapter<ITransaction>({
-    selectId: (transaction: ITransaction) => transaction.transactionId
+    selectId: (transaction: ITransaction) => transaction._id
 });
 
 const initialState = entityAdapter.getInitialState();
